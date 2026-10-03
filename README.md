@@ -2,8 +2,8 @@
 
 > A chess game for the browser, written from scratch in plain JavaScript, with a minimax AI to play against.
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 ![JavaScript](https://img.shields.io/badge/language-JavaScript-f7df1e)
-<!-- TODO: add the license badge once a license is chosen -->
 
 ![Game in progress: wooden chessboard with the pieces, the captured-pieces counter and last move on the right, and the player and AI panels on the left](docs/screenshots/cover.png)
 
@@ -107,4 +107,4 @@ If I picked it up again, I would split `app.js` into modules, replace the global
 - The AI is based on the freeCodeCamp guide [*A step-by-step guide to building a simple chess AI*](https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/).
 - <!-- TODO: source and license of the piece images, wood textures, icons and sounds -->
 
-<!-- TODO: choose a license (e.g. MIT) and add a LICENSE file -->
+The code is released under the [MIT License](LICENSE).
