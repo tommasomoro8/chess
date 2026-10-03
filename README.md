@@ -1,6 +1,6 @@
 # Chess
 
-> A chess game for the browser, written from scratch in plain JavaScript, with a minimax AI to play against.
+A chess game for the browser, written from scratch in plain JavaScript, with a minimax AI to play against.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 ![JavaScript](https://img.shields.io/badge/language-JavaScript-f7df1e)
@@ -44,7 +44,6 @@ Click a piece and the squares it can move to light up. Click one of them to move
 - HTML5
 - CSS3 (separate landscape and portrait layouts with media queries)
 - JavaScript, with no libraries or frameworks
-- HTML5 Audio for the sound effects
 - Google Fonts (Lato)
 <!-- portfolio:end -->
 
@@ -52,32 +51,23 @@ Click a piece and the squares it can move to light up. Click one of them to move
 
 ```mermaid
 flowchart LR
-    UI["index.html<br/>home · settings · game"] -->|click| Turn["Turn handling<br/>clicco · controlloturni"]
+    Home["Home screen<br/>mode choice"] -->|goto*| Game
+    Home -->|gotosettings| Settings["Settings screen<br/>depth · pieces · audio · hints"]
+    Settings -.->|global variables| Turn
+    Game["Game screen<br/>board · side panels"] -->|click| Turn["Turn handling<br/>clicco · controlloturni"]
     Turn --> Moves["Move generation<br/>trovacasellelegali · muovicheck · isscacco"]
     Turn --> End["End of game<br/>controllawin · solo2re"]
     Turn -->|AI to move| AI["AI<br/>minimaxRoot · minimax · valutatore"]
     AI --> Moves
     Moves --> Board[("casella<br/>8×8 matrix")]
     AI --> Board
-    Turn --> Render["stampa<br/>redraws the board"]
-    Render --> UI
+    Turn --> Render["stampa<br/>board · captured · last move · turn"]
+    Render --> Game
 ```
 
 - **One page, one script.** The home, settings and game screens are `div`s that are shown and hidden. There is no build step, so the game runs on any static host.
 - **The board is a matrix of names.** Each square holds a string like `"Wpedone"` or `"vuoto"`. The first letter gives the colour, and the name is also the image file name (`img3pack/Wpedone.png`). That makes redrawing the board and switching piece styles a one-line change.
 - **The AI runs in the same thread as the page.** That keeps the code simple, but the page doesn't respond while the AI is searching. At higher depths you notice it.
-
-## Running locally
-
-You need a modern browser. No dependencies to install.
-
-```bash
-git clone https://github.com/tommasomoro8/chess.git
-cd chess
-python3 -m http.server 8000
-```
-
-Then open http://localhost:8000. Opening `index.html` directly from disk also works. Any static server will do; Python is only one option. There are no tests.
 
 ## Repository structure
 
@@ -97,14 +87,22 @@ Then open http://localhost:8000. Opening `index.html` directly from disk also wo
 - Pawns always promote to a queen.
 - No draw by threefold repetition or by the 50-move rule.
 - The AI never castles.
+- The AI can't tell checkmate from stalemate. In the search, a side with no legal moves gets the same score either way, so the AI can stalemate an opponent it was beating.
+- The AI only sees checkmate before the last level of its search. At depth 1 it misses even mate in one, and it doesn't prefer a quicker mate to a slower one.
 - The interface is in Italian only.
 
-If I picked it up again, I would split `app.js` into modules, replace the global variables with a single game state, move the AI search into a Web Worker so the page keeps responding, and add tests for move generation.
+If I picked it up again, I would rewrite it with classes and a model-view-controller split:
+
+- **Model**: a `Game` class that holds the whole position (board, side to move, castling rights, en passant square) and knows the rules: legal moves, check, checkmate, stalemate. It never touches the DOM and can copy itself.
+- **View**: draws the board and the side panels from the model's state and plays the sounds. Today rule code and screen updates are mixed together (pawn promotion redraws all 64 squares).
+- **Controller**: handles clicks and settings, asks the model to play moves and the AI for its move, then tells the view to update.
+- **AI**: a separate module that only works on copies of `Game`. That would let it castle and capture en passant, and run in a Web Worker so the page keeps responding.
+
+With the rules isolated from the page I could finally add tests for move generation. In the AI I would score checkmate and stalemate differently and rank closer mates higher.
 
 ## Credits and license
 
 - Code and chess logic: Tommaso Moro.
 - The AI is based on the freeCodeCamp guide [*A step-by-step guide to building a simple chess AI*](https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/).
-- <!-- TODO: source and license of the piece images, wood textures, icons and sounds -->
 
 The code is released under the [MIT License](LICENSE).
