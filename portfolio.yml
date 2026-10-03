@@ -1,0 +1,11 @@
+title: "Chess"
+slug: "chess"
+category: ""             # TODO: uni | scuola | pers | comm
+year: 0                  # TODO: year it was built (third year of high school)
+period: ""               # TODO: e.g. "set 2020 – giu 2021"
+status: "completato"
+role: "da solo"
+cover: docs/screenshots/cover.png
+demo: "https://morotommaso.altervista.org/chess/"
+note: ""
+press: []

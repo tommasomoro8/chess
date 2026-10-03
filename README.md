@@ -1,0 +1,110 @@
+# Chess
+
+> A chess game for the browser, written from scratch in plain JavaScript, with a minimax AI to play against.
+
+![JavaScript](https://img.shields.io/badge/language-JavaScript-f7df1e)
+<!-- TODO: add the license badge once a license is chosen -->
+
+![Game in progress: wooden chessboard with the pieces, the captured-pieces counter and last move on the right, and the player and AI panels on the left](docs/screenshots/cover.png)
+
+**Live demo:** https://morotommaso.altervista.org/chess/
+
+<!-- portfolio:start -->
+## The problem
+
+I built this in my third year of high school, teaching myself as I went. I wanted to see if I could turn the rules of chess into working code: a board you can click on, moves that are checked against the real rules, and an opponent that plays on its own. It was one of my first structured projects and the one that got me hooked on programming. The code shows that: it is unfinished and could be better everywhere. I'm keeping it as it is, as a snapshot of how I wrote code back then.
+
+## The solution
+
+A single web page with three modes:
+
+- **Player vs Player** on the same screen, with a draw request button for each side.
+- **Player vs AI**: you play White, the AI plays Black. There are four difficulty levels (search depth 2 to 5).
+- **AI vs AI**: two AIs play each other, with a separate depth for each side.
+
+Click a piece and the squares it can move to light up. Click one of them to move. During the game, side panels show the move count, captured pieces, the last move and, for the AI, how many positions it evaluated and how many milliseconds that took. In the settings you can turn sound and move hints on or off and choose one of three piece styles.
+
+![Home screen with the three game modes (person vs person, person vs bot, bot vs bot) and the Replay and Settings buttons](docs/screenshots/home.png)
+
+## Technical challenges
+
+- **Legal moves and check.** For each piece I first mark the squares it can reach. Then I try each move on a copy of the board and check whether any enemy piece now attacks my king. If one does, the move is discarded. Castling uses flags that record whether the king and each rook have moved. En passant uses a list of pawns that have just moved two squares.
+- **Checkmate or stalemate.** After every move I work out every legal move for the side to play and every square the opponent attacks. If the side to play has no legal moves, the game ends: checkmate if its king is attacked, a draw if not. A board with only the two kings left is also a draw.
+- **The AI.** I followed a [freeCodeCamp guide](https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/): minimax with alpha-beta pruning. To score a position it adds up material (pawn 10, knight and bishop 30, rook 50, queen 90, king 900) plus a bonus for each piece's square. The hard part was fitting it to my own board. The board is a matrix of strings, not a chess library, so I save a copy of it before exploring each move and restore it afterwards.
+
+## What I learned
+
+- Representing game state with 2D arrays. The board, the reachable squares and the attacked squares are all 8×8 matrices.
+- Driving a page from JavaScript through the DOM: redrawing 64 squares after every move and switching screens without reloading the page.
+- Taking a recursive algorithm from a guide and fitting it to data structures I had designed myself.
+- How quickly a single file of global variables and repeated functions gets hard to change. That's the first thing I would do differently.
+
+## Stack
+
+- HTML5
+- CSS3 (separate landscape and portrait layouts with media queries)
+- JavaScript, with no libraries or frameworks
+- HTML5 Audio for the sound effects
+- Google Fonts (Lato)
+<!-- portfolio:end -->
+
+## Architecture
+
+```mermaid
+flowchart LR
+    UI["index.html<br/>home · settings · game"] -->|click| Turn["Turn handling<br/>clicco · controlloturni"]
+    Turn --> Moves["Move generation<br/>trovacasellelegali · muovicheck · isscacco"]
+    Turn --> End["End of game<br/>controllawin · solo2re"]
+    Turn -->|AI to move| AI["AI<br/>minimaxRoot · minimax · valutatore"]
+    AI --> Moves
+    Moves --> Board[("casella<br/>8×8 matrix")]
+    AI --> Board
+    Turn --> Render["stampa<br/>redraws the board"]
+    Render --> UI
+```
+
+- **One page, one script.** The home, settings and game screens are `div`s that are shown and hidden. There is no build step, so the game runs on any static host.
+- **The board is a matrix of names.** Each square holds a string like `"Wpedone"` or `"vuoto"`. The first letter gives the colour, and the name is also the image file name (`img3pack/Wpedone.png`). That makes redrawing the board and switching piece styles a one-line change.
+- **The AI runs in the same thread as the page.** That keeps the code simple, but the page doesn't respond while the AI is searching. At higher depths you notice it.
+
+## Running locally
+
+You need a modern browser. No dependencies to install.
+
+```bash
+git clone https://github.com/tommasomoro8/chess.git
+cd chess
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000. Opening `index.html` directly from disk also works. Any static server will do; Python is only one option. There are no tests.
+
+## Repository structure
+
+| Path | Contents |
+| --- | --- |
+| `index.html` | The page: home, settings and game screens, and the 64 squares. |
+| `app.js` | All the logic: navigation, rules, end-of-game checks, AI, rendering. |
+| `style.css` | Layout and wood theme, with separate landscape and portrait rules. |
+| `img1pack/`, `img2pack/`, `img3pack/` | The three piece styles you can pick in Settings. |
+| `imgbase/` | Board textures, logos and icons. |
+| `audio/` | Sound effects for game start, move, capture, castling and game end. |
+
+## Known limitations and future work
+
+- The timer can be set in Settings but doesn't count down.
+- Replay and Play/Pause are placeholders.
+- Pawns always promote to a queen.
+- No draw by threefold repetition or by the 50-move rule.
+- The AI never castles.
+- The interface is in Italian only.
+
+If I picked it up again, I would split `app.js` into modules, replace the global variables with a single game state, move the AI search into a Web Worker so the page keeps responding, and add tests for move generation.
+
+## Credits and license
+
+- Code and chess logic: Tommaso Moro.
+- The AI is based on the freeCodeCamp guide [*A step-by-step guide to building a simple chess AI*](https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/).
+- <!-- TODO: source and license of the piece images, wood textures, icons and sounds -->
+
+<!-- TODO: choose a license (e.g. MIT) and add a LICENSE file -->
