@@ -66,19 +66,25 @@ flowchart LR
 ```
 
 - **One page, one script.** The home, settings and game screens are `div`s that are shown and hidden. There is no build step, so the game runs on any static host.
-- **The board is a matrix of names.** Each square holds a string like `"Wpedone"` or `"vuoto"`. The first letter gives the colour, and the name is also the image file name (`img3pack/Wpedone.png`). That makes redrawing the board and switching piece styles a one-line change.
+- **The board is a matrix of names.** Each square holds a string like `"Wpedone"` or `"vuoto"`. The first letter gives the colour, and the name is also the image file name (`src/img3pack/Wpedone.png`). That makes redrawing the board and switching piece styles a one-line change.
 - **The AI runs in the same thread as the page.** That keeps the code simple, but the page doesn't respond while the AI is searching. At higher depths you notice it.
 
 ## Repository structure
 
-| Path | Contents |
-| --- | --- |
-| `index.html` | The page: home, settings and game screens, and the 64 squares. |
-| `app.js` | All the logic: navigation, rules, end-of-game checks, AI, rendering. |
-| `style.css` | Layout and wood theme, with separate landscape and portrait rules. |
-| `img1pack/`, `img2pack/`, `img3pack/` | The three piece styles you can pick in Settings. |
-| `imgbase/` | Board textures, logos and icons. |
-| `audio/` | Sound effects for game start, move, capture, castling and game end. |
+```
+chess/
+├── src/                          ← the game
+│   ├── index.html                ← home, settings and game screens, and the 64 squares
+│   ├── app.js                    ← all the logic: navigation, rules, end of game, AI, rendering
+│   ├── style.css                 ← layout and wood theme, landscape and portrait rules
+│   ├── img1pack/ … img3pack/     ← the three piece styles you can pick in Settings
+│   ├── imgbase/                  ← board textures, logos and icons
+│   └── audio/                    ← sound effects: start, move, capture, castling, game end
+├── docs/screenshots/             ← images used in this README
+├── README.md
+├── LICENSE
+└── portfolio.yml                 ← metadata for my portfolio
+```
 
 ## Known limitations and future work
 
