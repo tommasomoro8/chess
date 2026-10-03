@@ -1,10 +1,10 @@
 title: "Chess"
 slug: "chess"
-category: ""             # TODO: uni | scuola | pers | comm
+category: "pers"         # uni | school | pers | comm
 year: 2021
-period: ""               # TODO: e.g. "set 2020 – giu 2021"
-status: "completato"
-role: "da solo"
+period: "Mar 2021 – May 2021"
+status: "completed"      # completed | in progress | archived
+role: "solo"             # e.g. "solo", "team of 4, backend"
 cover: docs/screenshots/cover.png
 demo: "https://morotommaso.altervista.org/chess/"
 note: ""
