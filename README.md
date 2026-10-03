@@ -106,3 +106,7 @@ With the rules isolated from the page I could finally add tests for move generat
 - The AI is based on the freeCodeCamp guide [*A step-by-step guide to building a simple chess AI*](https://www.freecodecamp.org/news/simple-chess-ai-step-by-step-1d55a9266977/).
 
 The code is released under the [MIT License](LICENSE).
+
+---
+
+Created by Tommaso Moro in May 2021.
