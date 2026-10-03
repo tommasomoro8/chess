@@ -1,0 +1,963 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+  
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ededed;
+    font-family: 'Lato', sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+div, button {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    opacity:1;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+div, button:focus {
+ outline:none;
+}
+
+.noscript {
+    background-color: #ededed;
+    color: black;
+    width: 100%;
+    height: 100vh;
+    font-size: 4vw;
+    font-weight: bold;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/*-- Home --*/
+
+.containerhome {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.titolohome {
+    font-size: 7vh;
+    padding-bottom: 3vh;
+    color: #4d2e20;
+    font-weight: bold;
+}
+
+.imgnpart {
+    width: 12vh;
+    height: 12vh;
+}
+
+.spazionpart {
+    width: 10vh;
+    height: 2vh;
+}
+
+.nuovapartita {
+    width: 45vh;
+    height: 15vh;
+    border-radius: 4vh;
+    font-size: 4vh;
+    color: white;
+    font-weight: bold;
+    background-image: url(imgbase/legnochiaro.png);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.settings {
+    width: 16vh;
+    height: 21vh;
+    border-radius: 4vh;
+    color: white;
+    font-weight: bold;
+    background-image: url(imgbase/legnochiaro.png);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.titoloreplay {
+    font-size: 3vh;
+    padding-top: 1vh;
+}
+
+.settingsimg {
+    width: 11vh;
+    height: 11vh;
+}
+
+.replayimg {
+    width: 12vh;
+    height: 12vh;
+}
+
+.spaziobottonihome {
+    width: 2.5vh;
+    height: 3vh;
+}
+
+.spaziobottonihome2 {
+    width: 3vh;
+    height: 1vh;
+}
+
+.spaziobottonihome3 {
+    width: 3vh;
+    height: 1.65vh;
+}
+
+.spaziosettings {
+    width: 1vh;
+    height: 1vh;
+}
+
+/*-- Settings --*/
+
+.containersettings {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/*-- Replay --*/
+
+.replay {
+    display: none;
+}
+
+/*-- Gioco --*/
+
+.containergame {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.titolo {
+    color: #4d2e20;
+    font-weight: bold;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.casellaw {
+    background-image: url(imgbase/legnochiaro.png);
+    background-size: cover;
+    color: black;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: none;
+}
+
+.casellab {
+    background-image: url(imgbase/legnoscuro.png);
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: none;
+}
+
+.borderlatsx {
+    background-image: url(imgbase/legnobordo.png);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.borderlatdx {
+    background-image: url(imgbase/legnobordo.png);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.borderbotton {
+    background-image: url(imgbase/legnobordo.png);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.bordertop {
+    background-image: url(imgbase/legnobordo.png);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.borderquadupsx {
+    background-image: url(imgbase/legnobordo.png);
+}
+
+.borderquadupdx {
+    background-image: url(imgbase/legnobordo.png);
+}
+
+.borderquaddosx {
+    background-image: url(imgbase/legnobordo.png);
+}
+
+.borderquaddodx {
+    background-image: url(imgbase/legnobordo.png);
+}
+
+.turno {
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(imgbase/legnobordo.png);
+    border-style: solid;
+    border-color: #583424;
+}
+
+.turnotext {
+    display: flex;
+    justify-content:flex-end;
+    flex-direction: column;
+}
+
+.turnoid {
+    display: flex;
+    justify-content:flex-start;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.nero {
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(imgbase/legnobordo.png);
+    border-style: solid;
+    border-color: #583424;
+}
+
+.AI {
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(imgbase/legnobordo.png);
+    border-style: solid;
+    border-color: #583424;
+}
+
+.bianco {
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(imgbase/legnobordo.png);
+    border-style: solid;
+    border-color: #583424;
+}
+
+.biancoAI {
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(imgbase/legnobordo.png);
+    border-style: solid;
+    border-color: #583424;
+}
+
+.patta {
+    color: white;
+    background-color: #583424;
+    cursor: pointer;
+}
+
+.patta:hover {
+    background-color: #331e15;
+}
+
+.titolotab {
+    font-weight: bold;
+}
+
+.ultimamossa {
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(imgbase/legnobordo.png);
+    border-style: solid;
+    border-color: #583424;
+}
+
+.ultimamossatext {
+    display: flex;
+    justify-content:flex-end;
+    flex-direction: column;
+}
+
+.ultimapedina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ultimamossaid {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.ultimamossadis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.mangiate {
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(imgbase/legnobordo.png);
+    border-style: solid;
+    border-color: #583424;
+}
+
+.columnmangiate {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.nummangiate {
+    font-weight: bold;
+}
+
+.rigamagiate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.reset {
+    color: white;
+    font-weight: bold;
+    background-color: #583424;
+    cursor: pointer;
+}
+
+.home {
+    color: white;
+    font-weight: bold;
+    background-color: #583424;
+    cursor: pointer;
+}
+
+#onlyPvP {
+    display: flex;
+    flex-direction: column;
+}
+
+.reset:hover {
+    background-color: #331e15;
+}
+
+.home:hover {
+    background-color: #331e15;
+}
+
+@media (min-width: 10px) and (orientation:landscape) {
+    .titolo {
+        font-size: 9vh;
+        padding-bottom: 1.8vh;
+    }
+    
+    .casellaw {
+        width: 9vh;
+        height: 9vh;
+    }
+
+    .casellab {
+        width: 9vh;
+        height: 9vh;
+    }
+
+    .img {
+        width: 9vh;
+        height: 9vh;
+    }
+
+    .borderlatsx {
+        width: 3vh;
+        height: 9vh;
+        font-size: 1.8vh;
+    }
+
+    .borderlatdx {
+        width: 3vh;
+        height: 9vh;
+        font-size: 1.8vh;
+    }
+
+    .borderbotton {
+        width: 9vh;
+        height: 3vh;
+        font-size: 1.8vh;
+    }
+
+    .bordertop {
+        width: 9vh;
+        height: 3vh;
+        font-size: 1.8vh;
+    }
+
+    .borderquadupsx {
+        width: 3vh;
+        height: 3vh;
+        border-top-left-radius: 1vh;
+    }
+
+    .borderquadupdx {
+        width: 3vh;
+        height: 3vh;
+        border-top-right-radius: 1vh;
+    }
+
+    .borderquaddosx {
+        width: 3vh;
+        height: 3vh;
+        border-bottom-left-radius: 1vh;
+    }
+
+    .borderquaddodx {
+        width: 3vh;
+        height: 3vh;
+        border-bottom-right-radius: 1vh;
+    }
+    
+    .verticalesx {
+        width: 20vh;
+        height: 2vh;
+    }
+
+    .verticalesx2 {
+        width: 20vh;
+        height: 6vh;
+    }
+
+    .turno {
+        width: 20vh;
+        height: 14vh;
+        border-radius: 1vh;
+        border-width: 1.2vh;
+    }
+
+    .turnotext {
+        font-size: 2.5vh;
+        padding-bottom: 0.5vh;
+    }
+
+    .turnoid {
+        font-size: 4vh;
+        padding-top: 0.5vh;
+    }
+
+    .nero {
+        width: 20vh;
+        height: 24vh;
+        border-radius: 1vh;
+        border-width: 1.2vh;
+    }
+    
+    .AI {
+        width: 20vh;
+        height: 28vh;
+        border-radius: 1vh;
+        border-width: 1.2vh;
+    }
+
+    .bianco {
+        width: 20vh;
+        height: 24vh;
+        border-radius: 1vh;
+        border-width: 1.2vh;
+    }
+    
+    .biancoAI {
+        width: 20vh;
+        height: 20vh;
+        border-radius: 1vh;
+        border-width: 1.2vh;
+    }
+
+    .patta {
+        width: 12vh;
+        height: 4vh;
+        font-size: 2vh;
+        border-radius: 1vh;
+    }
+
+    .titolotab {
+        font-size: 4vh;
+        padding-bottom: 1.5vh;
+    }
+
+    .tab1 {
+        font-size: 2.5vh;
+        padding-bottom: 1.5vh;
+    }
+
+    .tab2 {
+        font-size: 2.5vh;
+        padding-bottom: 2vh;
+    }
+    
+    .tab3 {
+        font-size: 2.5vh;
+        padding-bottom: 0.8vh;
+    }
+    
+    .tab4 {
+        font-size: 2.5vh;
+        padding-bottom: 0.6vh;
+    }
+
+    .spaziolat {
+        width: 3vh;
+        height: 4vh;
+    }
+
+    .verticaledx {
+        width: 20vh;
+        height: 2vh;
+    }
+
+    .verticaledx2 {
+        width: 20vh;
+        height: 4.25vh;
+    }
+
+    .verticalebutton {
+        width: 20vh;
+        height: 1.5vh;
+    }
+
+    .ultimamossa {
+        width: 20vh;
+        height: 18vh;
+        border-radius: 1vh;
+        border-width: 1.2vh;
+    }
+
+    .ultimamossatext {
+        font-size: 2.5vh;
+        padding-bottom: 0.5vh;
+    }
+
+    .ultimapedina {
+        width: 9.5vh;
+        height: 9.5vh;
+        padding-bottom: 0.5vh;
+    }
+
+    .ultimamossaid {
+        width: 10vh;
+        height: 5vh;
+        font-size: 3vh;
+    }
+
+    .ultimamossadis {
+        width: 20vh;
+        height: 10vh;
+    }
+
+    .titolotab2 {
+        font-size: 2.3vh;
+        padding-bottom: 0.5vh;
+    }
+
+    .mangiate {
+        width: 20vh;
+        height: 36vh;
+        border-radius: 1vh;
+        border-width: 1.2vh;
+    }
+
+    .columnmangiate {
+        width: 8vh;
+    }
+
+    .imgmangiate {
+        width: 6vh;
+        height: 6vh;
+    }
+
+    .nummangiate {
+        font-size: 2vh;
+    }
+
+    .rigamagiate {
+        width: 7.5vh;
+        height: 5vh;
+    }
+
+    .spaziorigheman {
+        width: 8.5vh;
+        height: 1vh;
+    }
+
+    .reset {
+        width: 20vh;
+        height: 5vh;
+        font-size: 2vh;
+        border-radius: 1vh;
+    }
+
+    .home {
+        width: 20vh;
+        height: 5vh;
+        font-size: 2vh;
+        border-radius: 1vh;
+    }
+    
+    .onlyPvAI {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 10px) and (orientation:portrait) {
+    .titolo {
+        font-size: 9vw;
+        padding-bottom: 1.8vw;
+    }
+    
+    .casellaw {
+        width: 9vw;
+        height: 9vw;
+    }
+
+    .casellab {
+        width: 9vw;
+        height: 9vw;
+    }
+
+    .img {
+        width: 9vw;
+        height: 9vw;
+    }
+
+    .borderlatsx {
+        width: 3vw;
+        height: 9vw;
+        font-size: 1.8vw;
+    }
+
+    .borderlatdx {
+        width: 3vw;
+        height: 9vw;
+        font-size: 1.8vw;
+    }
+
+    .borderbotton {
+        width: 9vw;
+        height: 3vw;
+        font-size: 1.8vw;
+    }
+
+    .bordertop {
+        width: 9vw;
+        height: 3vw;
+        font-size: 1.8vw;
+    }
+
+    .borderquadupsx {
+        width: 3vw;
+        height: 3vw;
+        border-top-left-radius: 1vw;
+    }
+
+    .borderquadupdx {
+        width: 3vw;
+        height: 3vw;
+        border-top-right-radius: 1vw;
+    }
+
+    .borderquaddosx {
+        width: 3vw;
+        height: 3vw;
+        border-bottom-left-radius: 1vw;
+    }
+
+    .borderquaddodx {
+        width: 3vw;
+        height: 3vw;
+        border-bottom-right-radius: 1vw;
+    }
+        
+    .verticalesx {
+        width: 20vw;
+        height: 2vw;
+    }
+
+    .verticalesx2 {
+        width: 20vw;
+        height: 6vw;
+    }
+
+    .turno {
+        width: 20vw;
+        height: 14vw;
+        border-radius: 1vw;
+        border-width: 1.2vw;
+    }
+
+    .turnotext {
+        font-size: 2.5vw;
+        padding-bottom: 0.5vw;
+    }
+
+    .turnoid {
+        font-size: 4vw;
+        padding-top: 0.5vw;
+    }
+
+    .nero {
+        width: 20vw;
+        height: 24vw;
+        border-radius: 1vw;
+        border-width: 1.2vw;
+    }
+    
+    .AI {
+        width: 20vw;
+        height: 28vw;
+        border-radius: 1vw;
+        border-width: 1.2vw;
+    }
+
+    .bianco {
+        width: 20vw;
+        height: 24vw;
+        border-radius: 1vw;
+        border-width: 1.2vw;
+    }
+    
+    .biancoAI {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 1vw;
+        border-width: 1.2vw;
+    }
+
+    .patta {
+        width: 12vw;
+        height: 4vw;
+        font-size: 2vw;
+        border-radius: 1vw;
+    }
+
+    .titolotab {
+        font-size: 4vw;
+        padding-bottom: 1.5vw;
+    }
+
+    .tab1 {
+        font-size: 2.5vw;
+        padding-bottom: 1.5vw;
+    }
+
+    .tab2 {
+        font-size: 2.5vw;
+        padding-bottom: 2vw;
+    }
+
+    .tab3 {
+        font-size: 2.5vw;
+        padding-bottom: 0.8vw;
+    }
+    
+    .tab4 {
+        font-size: 2.5vw;
+        padding-bottom: 0.6vw;
+    }
+
+    .spaziolat {
+        width: 3vw;
+        height: 4vw;
+    }
+
+    .verticaledx {
+        width: 20vw;
+        height: 2vw;
+    }
+
+    .verticaledx2 {
+        width: 20vw;
+        height: 4.25vw;
+    }
+
+    .verticalebutton {
+        width: 20vw;
+        height: 1.5vw;
+    }
+
+    .ultimamossa {
+        width: 20vw;
+        height: 18vw;
+        border-radius: 1vw;
+        border-width: 1.2vw;
+    }
+
+    .ultimamossatext {
+        font-size: 2.5vw;
+        padding-bottom: 0.5vw;
+    }
+
+    .ultimapedina {
+        width: 9.5vw;
+        height: 9.5vw;
+        padding-bottom: 0.5vw;
+    }
+
+    .ultimamossaid {
+        width: 10vw;
+        height: 5vw;
+        font-size: 3vw;
+    }
+
+    .ultimamossadis {
+        width: 20vw;
+        height: 10vw;
+    }
+
+    .titolotab2 {
+        font-size: 2.3vw;
+        padding-bottom: 0.5vw;
+    }
+
+    .mangiate {
+        width: 20vw;
+        height: 36vw;
+        border-radius: 1vw;
+        border-width: 1.2vw;
+    }
+
+    .columnmangiate {
+        width: 8vw;
+    }
+
+    .imgmangiate {
+        width: 6vw;
+        height: 6vw;
+    }
+
+    .nummangiate {
+        font-size: 2vw;
+    }
+
+    .rigamagiate {
+        width: 7.5vw;
+        height: 5vw;
+    }
+
+    .spaziorigheman {
+        width: 8.5vw;
+        height: 1vw;
+    }
+
+    .reset {
+        width: 20vw;
+        height: 5vw;
+        font-size: 2vw;
+        border-radius: 1vw;
+    }
+
+    .home {
+        width: 20vw;
+        height: 5vw;
+        font-size: 2vw;
+        border-radius: 1vw;
+    }
+}

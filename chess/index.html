@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Gioca a scacchi" />
+   <title>Chess - Home</title>
+   <link href="imgbase/logolightmode.png" rel="shortcut icon" type="imag/x-icon" />
+   <link href="style.css" rel="stylesheet" type="text/css" media="all" />
+   <script src="app.js"></script>
+   <noscript><div class="noscript">Non puoi accedere al sito senza Javascript,<br> attivalo dalle impostazioni del tuo browser.</div></noscript>
+</head>
+<body oncontextmenu="return false;">
+   
+   <div class="containerhome" id="containerhomeid">
+        <div class="titolohome">Benvenuto su Chess!</div>
+        <div class="row">
+            <div class="column">
+                <button class="nuovapartita" onclick="goto2localplayers()">
+                    <img class="imgnpart" id="imgpartita" src="imgbase/iconapersona.png"/>
+                    <div class="spazionpart">VS</div>
+                    <img class="imgnpart" id="imgpartita" src="imgbase/iconapersona.png"/>
+                </button>
+                <div class="spaziobottonihome2"></div>
+                <button class="nuovapartita" onclick="goto1localplayer1bot()">
+                    <img class="imgnpart" id="imgpartita" src="imgbase/iconapersona.png"/>
+                    <div class="spazionpart">VS</div>
+                    <img class="imgnpart" id="imgpartita" src="imgbase/iconabot.png"/>
+                </button>
+                <div class="spaziobottonihome2"></div>
+                <button class="nuovapartita" onclick="goto2bot()">
+                    <img class="imgnpart" id="imgpartita" src="imgbase/iconabot.png"/>
+                    <div class="spazionpart">VS</div>
+                    <img class="imgnpart" id="imgpartita" src="imgbase/iconabot.png"/>
+                </button>
+            </div>
+            <div class="spaziobottonihome"></div>
+            <div class="column">
+               <div class="spaziobottonihome3"></div>
+                <button class="settings" onclick="gotoreplay()">
+                    <img class="replayimg" id="imgsettings" src="imgbase/iconareplay.png"/>
+                    <div class="titoloreplay">Replay</div>
+                </button>
+                <div class="spaziobottonihome3"></div>
+                <button class="settings" onclick="gotosettings()">
+                    <img class="settingsimg" id="imgsettings" src="imgbase/iconasettings.png"/>
+                    <div class="titoloreplay">Settings</div>
+                </button>
+                <div class="spaziobottonihome3"></div>
+            </div>
+        </div>
+   </div>
+   
+   <div class="containersettings" id="containersettingsid">
+       <div class="row">
+           <button class="home" onclick="aiutivisione = true;">Aiuto posizionamento si</button>
+           <button class="home" onclick="aiutivisione = false;">Aiuto posizionamento no</button>
+       </div>
+       <div class="row">
+           <button class="home" onclick="audio = true;">Audio si</button>
+           <button class="home" onclick="audio = false;">Audio no</button>
+       </div>
+       <div class="row">
+           <button class="home" onclick="stilepedina = 'img1pack';">Stile pedine 1</button>
+           <button class="home" onclick="stilepedina = 'img2pack';">Stile pedine 2</button>
+           <button class="home" onclick="stilepedina = 'img3pack';">Stile pedine 3</button>
+       </div>
+       <div class="row">
+           <button class="home" onclick="timecrono = '180';">03:00 min</button>
+           <button class="home" onclick="timecrono = '600';">10:00 min</button>
+           <button class="home" onclick="timecrono = 'nocrono';">no time</button>
+       </div>
+       <div class="row">
+           <button class="home" onclick="d = 2;">Facile</button>
+           <button class="home" onclick="d = 3;">Medio</button>
+           <button class="home" onclick="d = 4;">Difficile</button>
+           <button class="home" onclick="d = 5;">Molto difficile</button>
+       </div>
+       <div class="row">
+           <button class="home" onclick="d1 = 1;">Depth 1 Bianco</button>
+           <button class="home" onclick="d1 = 2;">Depth 2 Bianco</button>
+           <button class="home" onclick="d1 = 3;">Depth 3 Bianco</button>
+           <button class="home" onclick="d1 = 4;">Depth 4 Bianco</button>
+           <button class="home" onclick="d1 = 5;">Depth 5 Bianco</button>
+       </div>
+       <div class="row">
+           <button class="home" onclick="d2 = 1;">Depth 1 Nero</button>
+           <button class="home" onclick="d2 = 2;">Depth 2 Nero</button>
+           <button class="home" onclick="d2 = 3;">Depth 3 Nero</button>
+           <button class="home" onclick="d2 = 4;">Depth 4 Nero</button>
+           <button class="home" onclick="d2 = 5;">Depth 5 Nero</button>
+       </div>
+       <button class="home" onclick="gotohome('settings')">Torna alla home</button>
+   </div>
+   
+   <div class="containergame" id="containergameid">
+        <div class="titolo">Chess</div>
+        <div class="row">
+            <div class="row" id="statgioco1">
+             <div class="column" id="notAIvAI">
+                  <div class="verticalesx"></div>
+                  <div id="onlyPvP">
+                      <div class="nero">
+                          <div class="titolotab">Nero</div>
+                          <div class="tab1">Tempo: 10:00</div>
+                          <div class="tab2" id="mosseB">Mosse: 0</div>
+                          <button class="patta" id="pattaricB" onclick="pattarichiesta('B')">Patta</button>
+                      </div>
+                  </div>
+                  <div class="onlyPvAI" id="onlyPvAI">
+                      <div class="AI">
+                          <div class="titolotab">AI</div>
+                          <div class="tab2" id="depth">Depth: 3</div>
+                          <div class="tab3">Valutate:</div>
+                          <div class="tab4" id="mosseBOT">0 mosse</div>
+                          <div class="tab4" id="tempoBOT">in 0 ms</div>
+                      </div>
+                  </div>
+                  <div class="verticalesx2"></div>
+                  <div class="turno">
+                      <div class="turnotext">Muove ora:</div>
+                      <div class="turnoid" id="turnoattuale">Bianco</div>
+                  </div>
+                  <div class="verticalesx2"></div>
+                  <div class="bianco" id="bianco">
+                      <div class="titolotab" id="biancotit">Bianco</div>
+                      <div class="tab1">Tempo: 10:00</div>
+                      <div class="tab2" id="mosseW">Mosse: 0</div>
+                      <button class="patta" id="pattaricW" onclick="pattarichiesta('W')">Patta</button>
+                  </div>
+                  <div class="verticalesx"></div>
+             </div>
+             <div class="column" id="AIvAI">
+                  <div class="verticalesx"></div>
+                  <div class="onlyPvAI" id="onlyPvAI">
+                      <div class="AI">
+                          <div class="titolotab">AI Nero</div>
+                          <div class="tab2" id="depthB">Depth:</div>
+                          <div class="tab3">Valutate:</div>
+                          <div class="tab4" id="mosseAIB">0 mosse</div>
+                          <div class="tab4" id="tempoAIB">in 0 ms</div>
+                      </div>
+                  </div>
+                  <div class="verticalesx"></div>
+                  <div class="turno">
+                      <div class="turnotext">Muove ora:</div>
+                      <div class="turnoid" id="turnoattualeBOT">AI Bianco</div>
+                  </div>
+                  <div class="verticalesx"></div>
+                  <div class="onlyPvAI" id="onlyPvAI">
+                      <div class="AI">
+                          <div class="titolotab">AI Bianco</div>
+                          <div class="tab2" id="depthW">Depth:</div>
+                          <div class="tab3">Valutate:</div>
+                          <div class="tab4" id="mosseAIW">0 mosse</div>
+                          <div class="tab4" id="tempoAIW">in 0 ms</div>
+                      </div>
+                  </div>
+                  <div class="verticalesx"></div>
+             </div>
+             <div class="spaziolat"></div>
+            </div>
+         <div class="column">
+             <div class="row">
+                <div class="borderquadupsx"></div>
+                <div class="bordertop">A</div>
+                <div class="bordertop">B</div>
+                <div class="bordertop">C</div>
+                <div class="bordertop">D</div>
+                <div class="bordertop">E</div>
+                <div class="bordertop">F</div>
+                <div class="bordertop">G</div>
+                <div class="bordertop">H</div>
+                <div class="borderquadupdx"></div>
+             </div>
+             <div class="row">
+                <div class="borderlatsx">8</div>
+                <div class="casellaw" id="0" onclick="clicco(0, 0)" onmouseover="puntatore(0, 0)"><img class="img" id="img0"/></div>
+                <div class="casellab" id="1" onclick="clicco(0, 1)" onmouseover="puntatore(0, 1)"><img class="img" id="img1"/></div>
+                <div class="casellaw" id="2" onclick="clicco(0, 2)" onmouseover="puntatore(0, 2)"><img class="img" id="img2"/></div>
+                <div class="casellab" id="3" onclick="clicco(0, 3)" onmouseover="puntatore(0, 3)"><img class="img" id="img3"/></div>
+                <div class="casellaw" id="4" onclick="clicco(0, 4)" onmouseover="puntatore(0, 4)"><img class="img" id="img4"/></div>
+                <div class="casellab" id="5" onclick="clicco(0, 5)" onmouseover="puntatore(0, 5)"><img class="img" id="img5"/></div>
+                <div class="casellaw" id="6" onclick="clicco(0, 6)" onmouseover="puntatore(0, 6)"><img class="img" id="img6"/></div>
+                <div class="casellab" id="7" onclick="clicco(0, 7)" onmouseover="puntatore(0, 7)"><img class="img" id="img7"/></div>
+               <div class="borderlatdx">8</div>
+             </div>
+             <div class="row">
+                <div class="borderlatsx">7</div>
+                <div class="casellab" id="8" onclick="clicco(1, 0)" onmouseover="puntatore(1, 0)"><img class="img" id="img8"/></div>
+                <div class="casellaw" id="9" onclick="clicco(1, 1)" onmouseover="puntatore(1, 1)"><img class="img" id="img9"/></div>
+                <div class="casellab" id="10" onclick="clicco(1, 2)" onmouseover="puntatore(1, 2)"><img class="img" id="img10"/></div>
+                <div class="casellaw" id="11" onclick="clicco(1, 3)" onmouseover="puntatore(1, 3)"><img class="img" id="img11"/></div>
+                <div class="casellab" id="12" onclick="clicco(1, 4)" onmouseover="puntatore(1, 4)"><img class="img" id="img12"/></div>
+                <div class="casellaw" id="13" onclick="clicco(1, 5)" onmouseover="puntatore(1, 5)"><img class="img" id="img13"/></div>
+                <div class="casellab" id="14" onclick="clicco(1, 6)" onmouseover="puntatore(1, 6)"><img class="img" id="img14"/></div>
+                <div class="casellaw" id="15" onclick="clicco(1, 7)" onmouseover="puntatore(1, 7)"><img class="img" id="img15"/></div>
+                <div class="borderlatdx">7</div>
+             </div>
+             <div class="row">
+                <div class="borderlatsx">6</div>
+                <div class="casellaw" id="16" onclick="clicco(2, 0)" onmouseover="puntatore(2, 0)"><img class="img" id="img16"/></div>
+                <div class="casellab" id="17" onclick="clicco(2, 1)" onmouseover="puntatore(2, 1)"><img class="img" id="img17"/></div>
+                <div class="casellaw" id="18" onclick="clicco(2, 2)" onmouseover="puntatore(2, 2)"><img class="img" id="img18"/></div>
+                <div class="casellab" id="19" onclick="clicco(2, 3)" onmouseover="puntatore(2, 3)"><img class="img" id="img19"/></div>
+                <div class="casellaw" id="20" onclick="clicco(2, 4)" onmouseover="puntatore(2, 4)"><img class="img" id="img20"/></div>
+                <div class="casellab" id="21" onclick="clicco(2, 5)" onmouseover="puntatore(2, 5)"><img class="img" id="img21"/></div>
+                <div class="casellaw" id="22" onclick="clicco(2, 6)" onmouseover="puntatore(2, 6)"><img class="img" id="img22"/></div>
+                <div class="casellab" id="23" onclick="clicco(2, 7)" onmouseover="puntatore(2, 7)"><img class="img" id="img23"/></div>
+                <div class="borderlatdx">6</div>
+             </div>
+             <div class="row">
+                <div class="borderlatsx">5</div>
+                <div class="casellab" id="24" onclick="clicco(3, 0)" onmouseover="puntatore(3, 0)"><img class="img" id="img24"/></div>
+                <div class="casellaw" id="25" onclick="clicco(3, 1)" onmouseover="puntatore(3, 1)"><img class="img" id="img25"/></div>
+                <div class="casellab" id="26" onclick="clicco(3, 2)" onmouseover="puntatore(3, 2)"><img class="img" id="img26"/></div>
+                <div class="casellaw" id="27" onclick="clicco(3, 3)" onmouseover="puntatore(3, 3)"><img class="img" id="img27"/></div>
+                <div class="casellab" id="28" onclick="clicco(3, 4)" onmouseover="puntatore(3, 4)"><img class="img" id="img28"/></div>
+                <div class="casellaw" id="29" onclick="clicco(3, 5)" onmouseover="puntatore(3, 5)"><img class="img" id="img29"/></div>
+                <div class="casellab" id="30" onclick="clicco(3, 6)" onmouseover="puntatore(3, 6)"><img class="img" id="img30"/></div>
+                <div class="casellaw" id="31" onclick="clicco(3, 7)" onmouseover="puntatore(3, 7)"><img class="img" id="img31"/></div>
+                <div class="borderlatdx">5</div>
+             </div>
+             <div class="row">
+                <div class="borderlatsx">4</div>
+                <div class="casellaw" id="32" onclick="clicco(4, 0)" onmouseover="puntatore(4, 0)"><img class="img" id="img32"/></div>
+                <div class="casellab" id="33" onclick="clicco(4, 1)" onmouseover="puntatore(4, 1)"><img class="img" id="img33"/></div>
+                <div class="casellaw" id="34" onclick="clicco(4, 2)" onmouseover="puntatore(4, 2)"><img class="img" id="img34"/></div>
+                <div class="casellab" id="35" onclick="clicco(4, 3)" onmouseover="puntatore(4, 3)"><img class="img" id="img35"/></div>
+                <div class="casellaw" id="36" onclick="clicco(4, 4)" onmouseover="puntatore(4, 4)"><img class="img" id="img36"/></div>
+                <div class="casellab" id="37" onclick="clicco(4, 5)" onmouseover="puntatore(4, 5)"><img class="img" id="img37"/></div>
+                <div class="casellaw" id="38" onclick="clicco(4, 6)" onmouseover="puntatore(4, 6)"><img class="img" id="img38"/></div>
+                <div class="casellab" id="39" onclick="clicco(4, 7)" onmouseover="puntatore(4, 7)"><img class="img" id="img39"/></div>
+                <div class="borderlatdx">4</div>
+             </div>
+             <div class="row">
+                <div class="borderlatsx">3</div>
+                <div class="casellab" id="40" onclick="clicco(5, 0)" onmouseover="puntatore(5, 0)"><img class="img" id="img40"/></div>
+                <div class="casellaw" id="41" onclick="clicco(5, 1)" onmouseover="puntatore(5, 1)"><img class="img" id="img41"/></div>
+                <div class="casellab" id="42" onclick="clicco(5, 2)" onmouseover="puntatore(5, 2)"><img class="img" id="img42"/></div>
+                <div class="casellaw" id="43" onclick="clicco(5, 3)" onmouseover="puntatore(5, 3)"><img class="img" id="img43"/></div>
+                <div class="casellab" id="44" onclick="clicco(5, 4)" onmouseover="puntatore(5, 4)"><img class="img" id="img44"/></div>
+                <div class="casellaw" id="45" onclick="clicco(5, 5)" onmouseover="puntatore(5, 5)"><img class="img" id="img45"/></div>
+                <div class="casellab" id="46" onclick="clicco(5, 6)" onmouseover="puntatore(5, 6)"><img class="img" id="img46"/></div>
+                <div class="casellaw" id="47" onclick="clicco(5, 7)" onmouseover="puntatore(5, 7)"><img class="img" id="img47"/></div>
+                <div class="borderlatdx">3</div>
+             </div>
+             <div class="row">
+                <div class="borderlatsx">2</div>
+                <div class="casellaw" id="48" onclick="clicco(6, 0)" onmouseover="puntatore(6, 0)"><img class="img" id="img48"/></div>
+                <div class="casellab" id="49" onclick="clicco(6, 1)" onmouseover="puntatore(6, 1)"><img class="img" id="img49"/></div>
+                <div class="casellaw" id="50" onclick="clicco(6, 2)" onmouseover="puntatore(6, 2)"><img class="img" id="img50"/></div>
+                <div class="casellab" id="51" onclick="clicco(6, 3)" onmouseover="puntatore(6, 3)"><img class="img" id="img51"/></div>
+                <div class="casellaw" id="52" onclick="clicco(6, 4)" onmouseover="puntatore(6, 4)"><img class="img" id="img52"/></div>
+                <div class="casellab" id="53" onclick="clicco(6, 5)" onmouseover="puntatore(6, 5)"><img class="img" id="img53"/></div>
+                <div class="casellaw" id="54" onclick="clicco(6, 6)" onmouseover="puntatore(6, 6)"><img class="img" id="img54"/></div>
+                <div class="casellab" id="55" onclick="clicco(6, 7)" onmouseover="puntatore(6, 7)"><img class="img" id="img55"/></div>
+                <div class="borderlatdx">2</div>
+             </div>
+             <div class="row">
+                <div class="borderlatsx">1</div>
+                <div class="casellab" id="56" onclick="clicco(7, 0)" onmouseover="puntatore(7, 0)"><img class="img" id="img56"/></div>
+                <div class="casellaw" id="57" onclick="clicco(7, 1)" onmouseover="puntatore(7, 1)"><img class="img" id="img57"/></div>
+                <div class="casellab" id="58" onclick="clicco(7, 2)" onmouseover="puntatore(7, 2)"><img class="img" id="img58"/></div>
+                <div class="casellaw" id="59" onclick="clicco(7, 3)" onmouseover="puntatore(7, 3)"><img class="img" id="img59"/></div>
+                <div class="casellab" id="60" onclick="clicco(7, 4)" onmouseover="puntatore(7, 4)"><img class="img" id="img60"/></div>
+                <div class="casellaw" id="61" onclick="clicco(7, 5)" onmouseover="puntatore(7, 5)"><img class="img" id="img61"/></div>
+                <div class="casellab" id="62" onclick="clicco(7, 6)" onmouseover="puntatore(7, 6)"><img class="img" id="img62"/></div>
+                <div class="casellaw" id="63" onclick="clicco(7, 7)" onmouseover="puntatore(7, 7)"><img class="img" id="img63"/></div>
+                <div class="borderlatdx">1</div>
+             </div>
+             <div class="row">
+                <div class="borderquaddosx"></div>
+                <div class="borderbotton">A</div>
+                <div class="borderbotton">B</div>
+                <div class="borderbotton">C</div>
+                <div class="borderbotton">D</div>
+                <div class="borderbotton">E</div>
+                <div class="borderbotton">F</div>
+                <div class="borderbotton">G</div>
+                <div class="borderbotton">H</div>
+                <div class="borderquaddodx"></div>
+              </div>
+          </div>
+          <div class="spaziolat"></div>
+          <div class="column" id="statgioco2">
+              <div class="verticaledx"></div>
+              <div class="mangiate">
+                  <div class="titolotab2">Pedine mangiate:</div>
+                  <div class="row">
+                      <div class="columnmangiate">
+                          <div class="rigamagiate">
+                              <div class="nummangiate" id="nWpedone">0</div>
+                              <img class="imgmangiate" id="nummangWpedone"/>
+                          </div>
+                          <div class="spaziorigheman"></div>
+                          <div class="rigamagiate">
+                              <div class="nummangiate" id="nWcavallo">0</div>
+                              <img class="imgmangiate" id="nummangWcavallo"/>
+                          </div>
+                          <div class="spaziorigheman"></div>
+                          <div class="rigamagiate">
+                              <div class="nummangiate" id="nWalfiere">0</div>
+                              <img class="imgmangiate" id="nummangWalfiere"/>
+                          </div>
+                          <div class="spaziorigheman"></div>
+                          <div class="rigamagiate">
+                              <div class="nummangiate" id="nWtorre">0</div>
+                              <img class="imgmangiate" id="nummangWtorre"/>
+                          </div>
+                          <div class="spaziorigheman"></div>
+                          <div class="rigamagiate">
+                              <div class="nummangiate" id="nWregina">0</div>
+                              <img class="imgmangiate" id="nummangWregina"/>
+                          </div>
+                      </div>
+                      <div class="columnmangiate">
+                          <div class="rigamagiate">
+                              <img class="imgmangiate" id="nummangBpedone"/>
+                              <div class="nummangiate" id="nBpedone">0</div>
+                          </div>
+                          <div class="spaziorigheman"></div>
+                          <div class="rigamagiate">
+                              <img class="imgmangiate" id="nummangBcavallo"/>
+                              <div class="nummangiate" id="nBcavallo">0</div>
+                          </div>
+                          <div class="spaziorigheman"></div>
+                          <div class="rigamagiate">
+                              <img class="imgmangiate" id="nummangBalfiere"/>
+                              <div class="nummangiate" id="nBalfiere">0</div>
+                          </div>
+                          <div class="spaziorigheman"></div>
+                          <div class="rigamagiate">
+                              <img class="imgmangiate" id="nummangBtorre"/>
+                              <div class="nummangiate" id="nBtorre">0</div>
+                          </div>
+                          <div class="spaziorigheman"></div>
+                          <div class="rigamagiate">
+                              <img class="imgmangiate" id="nummangBregina"/>
+                              <div class="nummangiate" id="nBregina">0</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="verticaledx2"></div>
+              <div class="ultimamossa">
+                  <div class="ultimamossatext">Ultima mossa:</div>
+                  <div class="ultimamossadis">
+                      <img class="ultimapedina" id="ultimaimg"/>
+                      <div class="column">
+                          <div class="ultimamossaid" id="ultimainiziale"></div>
+                          <div class="ultimamossaid" id="ultimafinale"></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="verticaledx2"></div>
+              <button class="reset" onclick="alert('Funzione non ancora implementata')">Play/Pausa</button>
+              <div class="verticalebutton"></div>
+              <button class="home" onclick="gotohome('game')">Torna alla home</button>
+              <div class="verticaledx"></div>
+         </div>
+         <div class="replay" id="menureplay">
+             <button class="home" onclick="gotohome('replay')">Torna alla home</button>
+         </div>
+        </div>
+    </div>
+</body>
+</html>
