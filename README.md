@@ -33,7 +33,7 @@ HTML, CSS, JavaScript (no libraries), Google Fonts
 <!-- portfolio:start -->
 ## The problem
 
-I've always loved computers, and my high-school lessons gave me a way to turn that into programming. I also love chess, so when the second Covid lockdown in Italy left me with plenty of free time, I spent it on this: first rebuilding the game on screen, then getting the computer to play against me. It was one of my first structured projects and the one that got me hooked on programming. The code shows that: it is unfinished and could be better everywhere. I'm keeping it as it is, as a snapshot of how I wrote code back then.
+I've always loved computers, and my high-school lessons gave me a way to turn that into programming. I also enjoy chess, so when the second Covid lockdown in Italy left me with plenty of free time, I spent it on this: first rebuilding the game on screen, then getting the computer to play against me. It was one of my first structured projects and the one that got me hooked on programming. The code shows that: it is unfinished and could be better everywhere. I'm keeping it as it is, as a snapshot of how I wrote code back then.
 
 ## The solution
 
