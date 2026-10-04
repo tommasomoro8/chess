@@ -11,7 +11,7 @@ A chess game for the browser, written from scratch in plain JavaScript, with a m
 
 <!-- portfolio:summary
 ## The problem
-I built this in my third year of high school, teaching myself as I went. I wanted to turn the rules of chess into working code: a clickable board, moves checked against the real rules, and an opponent that plays on its own.
+I've always loved computers, and high school turned that into programming. During the second Covid lockdown in Italy I used my free time to rebuild chess and then get the computer to play against me.
 
 ## The solution
 A web page with three modes: player vs player, player vs AI with four difficulty levels, and AI vs AI. Click a piece to see where it can move. Side panels show captured pieces, the last move and how many positions the AI evaluated.
@@ -33,7 +33,7 @@ HTML, CSS, JavaScript (no libraries), Google Fonts
 <!-- portfolio:start -->
 ## The problem
 
-I built this in my third year of high school, teaching myself as I went. I wanted to see if I could turn the rules of chess into working code: a board you can click on, moves that are checked against the real rules, and an opponent that plays on its own. It was one of my first structured projects and the one that got me hooked on programming. The code shows that: it is unfinished and could be better everywhere. I'm keeping it as it is, as a snapshot of how I wrote code back then.
+I've always loved computers, and my high-school lessons gave me a way to turn that into programming. I also love chess, so when the second Covid lockdown in Italy left me with plenty of free time, I spent it on this: first rebuilding the game on screen, then getting the computer to play against me. It was one of my first structured projects and the one that got me hooked on programming. The code shows that: it is unfinished and could be better everywhere. I'm keeping it as it is, as a snapshot of how I wrote code back then.
 
 ## The solution
 
@@ -72,18 +72,12 @@ Click a piece and the squares it can move to light up. Click one of them to move
 
 ```mermaid
 flowchart LR
-    Home["Home screen<br/>mode choice"] -->|goto*| Game
-    Home -->|gotosettings| Settings["Settings screen<br/>depth · pieces · audio · hints"]
-    Settings -.->|global variables| Turn
-    Game["Game screen<br/>board · side panels"] -->|click| Turn["Turn handling<br/>clicco · controlloturni"]
-    Turn --> Moves["Move generation<br/>trovacasellelegali · muovicheck · isscacco"]
-    Turn --> End["End of game<br/>controllawin · solo2re"]
-    Turn -->|AI to move| AI["AI<br/>minimaxRoot · minimax · valutatore"]
-    AI --> Moves
-    Moves --> Board[("casella<br/>8×8 matrix")]
-    AI --> Board
-    Turn --> Render["stampa<br/>board · captured · last move · turn"]
-    Render --> Game
+    UI["Interface<br/>home · settings · game screen"] -->|clicks · settings| Game["Game logic<br/>turns · legal moves · end of game"]
+    Game -->|AI's turn| AI["AI<br/>minimax + alpha-beta"]
+    AI -->|chosen move| Game
+    Game <-->|reads · updates| Board[("Board<br/>8×8 matrix")]
+    AI -.->|tries moves, then restores| Board
+    Game -->|redraws| UI
 ```
 
 - **One page, one script.** The home, settings and game screens are `div`s that are shown and hidden. There is no build step, so the game runs on any static host.
