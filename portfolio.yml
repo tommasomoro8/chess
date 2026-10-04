@@ -9,3 +9,8 @@ cover: docs/screenshots/cover.png
 demo: "https://morotommaso.altervista.org/chess/"
 note: ""
 press: []
+screenshots:
+  - path: docs/screenshots/cover.png
+    alt: "Game in progress: wooden chessboard with the pieces, the captured-pieces counter and last move on the right, and the player and AI panels on the left"
+  - path: docs/screenshots/home.png
+    alt: "Home screen with the three game modes (person vs person, person vs bot, bot vs bot) and the Replay and Settings buttons"

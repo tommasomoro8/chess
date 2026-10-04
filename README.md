@@ -9,6 +9,27 @@ A chess game for the browser, written from scratch in plain JavaScript, with a m
 
 **Live demo:** https://morotommaso.altervista.org/chess/
 
+<!-- portfolio:summary
+## The problem
+I built this in my third year of high school, teaching myself as I went. I wanted to turn the rules of chess into working code: a clickable board, moves checked against the real rules, and an opponent that plays on its own.
+
+## The solution
+A web page with three modes: player vs player, player vs AI with four difficulty levels, and AI vs AI. Click a piece to see where it can move. Side panels show captured pieces, the last move and how many positions the AI evaluated.
+
+## Technical challenges
+- Legal moves: I try each move on a copy of the board and discard it if it leaves the king in check.
+- Checkmate or stalemate: with no legal moves left, the game is lost if the king is attacked and drawn if not.
+- The AI: minimax with alpha-beta pruning, following a freeCodeCamp guide, adapted to my own board representation.
+
+## What I learned
+- Modelling game state with 8×8 matrices.
+- Driving a page through the DOM without a framework.
+- How quickly global variables and repeated code become hard to change.
+
+## Stack
+HTML, CSS, JavaScript (no libraries), Google Fonts
+-->
+
 <!-- portfolio:start -->
 ## The problem
 
