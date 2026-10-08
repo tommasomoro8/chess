@@ -6,7 +6,7 @@ period: "Mar 2021 – May 2021"
 status: "completed"      # completed | in progress | archived
 role: "solo"             # e.g. "solo", "team of 4, backend"
 cover: docs/screenshots/cover.png
-demo: "https://morotommaso.altervista.org/chess/"
+demo: "https://tommasomoro8.github.io/chess/"
 note: ""
 press: []
 screenshots:

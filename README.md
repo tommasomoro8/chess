@@ -7,7 +7,7 @@ A chess game for the browser, written from scratch in plain JavaScript, with a m
 
 ![Game in progress: wooden chessboard with the pieces, the captured-pieces counter and last move on the right, and the player and AI panels on the left](docs/screenshots/cover.png)
 
-**Live demo:** https://morotommaso.altervista.org/chess/
+**Live demo:** https://tommasomoro8.github.io/chess/
 
 <!-- portfolio:summary
 ## The problem
