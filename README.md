@@ -1,4 +1,4 @@
-# Chess
+# Chess with Minimax AI
 
 A chess game for the browser, written from scratch in plain JavaScript, with a minimax AI to play against.
 
@@ -11,10 +11,10 @@ A chess game for the browser, written from scratch in plain JavaScript, with a m
 
 <!-- portfolio:summary
 ## The problem
-I've always loved computers, and high school turned that into programming. During the second Covid lockdown in Italy I used my free time to rebuild chess and then get the computer to play against me.
+I've always loved computers, and high school turned that into programming. During the second Covid lockdown in Italy I had plenty of free time, and I wanted to rebuild chess and then get the computer to play against me.
 
 ## The solution
-A web page with three modes: player vs player, player vs AI with four difficulty levels, and AI vs AI. Click a piece to see where it can move. Side panels show captured pieces, the last move and how many positions the AI evaluated.
+A web page where you can play against another person, against the AI at four difficulty levels, or watch two AIs play each other. Each level makes the minimax search one move deeper. Click a piece to see where it can move. Side panels show captured pieces, the last move and how many positions the AI evaluated.
 
 ## Technical challenges
 - Legal moves: I try each move on a copy of the board and discard it if it leaves the king in check.
